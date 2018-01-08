@@ -14,7 +14,13 @@
 :constraints:
 - CONSTRAINT ON ( `neo4j::migrations::schemamigration`:`Neo4j::Migrations::SchemaMigration`
   ) ASSERT `neo4j::migrations::schemamigration`.migration_id IS UNIQUE
+- CONSTRAINT ON ( post:Post ) ASSERT post.uuid IS UNIQUE
 - CONSTRAINT ON ( user:User ) ASSERT user.uuid IS UNIQUE
-:indexes: []
+:indexes:
+- INDEX ON :User(email)
+- INDEX ON :User(remember_token)
+- INDEX ON :User(reset_password_token)
 :versions:
 - '20180104124404'
+- '20180105054954'
+- '20180105072955'
